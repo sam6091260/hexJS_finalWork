@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="zh">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="shane" content="Shane lin" />
+    <meta name="robots" content="index,follow" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="./style-admin.css" />
+    <title>WOWOROOM_back</title>
+  </head>
+  <body>
+    <nav class="topBar">
+      <div class="wrap">
+        <h1><a href="./index.html" class="logo">WOWOROOM</a></h1>
+        <span class="material-icons menuToggle"> menu </span>
+        <ul class="topBar-menu">
+          <li><a href="#">後台管理</a></li>
+          <li><a href="#">管理員登入</a></li>
+        </ul>
+      </div>
+    </nav>
+    <section class="wrap">
+      <h2 class="section-title">全品項營收比重</h2>
+      <div id="chart"></div>
+    </section>
+    <section class="wrap orderPage-list">
+      <a href="#" class="discardAllBtn">清除全部訂單</a>
+      <div class="orderTableWrap">
+        <table class="orderPage-table">
+          <thead>
+            <tr>
+              <th width="10%">訂單編號</th>
+              <th width="10%">聯絡人</th>
+              <th width="10%">聯絡地址</th>
+              <th width="10%">電子郵件</th>
+              <th width="25%">訂單品項</th>
+              <th width="10%">訂單日期</th>
+              <th width="15%">訂單狀態</th>
+              <th width="10%">操作</th>
+            </tr>
+          </thead>
+          <tbody class="js-orderList"></tbody>
+        </table>
+      </div>
+      <a href="./index.html">回首頁</a>
+    </section>
+
+    <!-- C3 D3 -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/5.16.0/d3.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/c3/0.7.18/c3.js"></script>
+    <!-- axios -->
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="./admin.js"></script>
+    <script>
+      // 預設 JS，請同學不要修改此處
+      let menuOpenBtn = document.querySelector(".menuToggle");
+      let linkBtn = document.querySelectorAll(".topBar-menu a");
+      let menu = document.querySelector(".topBar-menu");
+      menuOpenBtn.addEventListener("click", menuToggle);
+
+      linkBtn.forEach((item) => {
+        item.addEventListener("click", closeMenu);
+      });
+
+      function menuToggle() {
+        if (menu.classList.contains("openMenu")) {
+          menu.classList.remove("openMenu");
+        } else {
+          menu.classList.add("openMenu");
+        }
+      }
+      function closeMenu() {
+        menu.classList.remove("openMenu");
+      }
+    </script>
+  </body>
+</html>
